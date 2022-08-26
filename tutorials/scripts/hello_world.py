@@ -1,4 +1,3 @@
-from email.headerregistry import DateHeader
 import taichi as ti
 
 """
@@ -16,7 +15,7 @@ This serves as hello world of Taichi, have a try.
 # ti.init(arch=ti.cpu)
 # ti.init(arch=ti.gpu) # falls back to cpu backend automatically if no GPU available
 # ti.init(arch=ti.cuda, device_memory_GB=3.4) # allocate exact GPU memory for taichi
-ti.init(arch=ti.cuda, device_memory_fraction=0.3) # allocate GPU mem by fraction
+ti.init(arch=ti.gpu, device_memory_fraction=0.7) # allocate GPU mem by fraction
 
 # there are a lot more args for ti.init() we can use
 
