@@ -12,6 +12,7 @@ ti.init(default_fp=ti.f64)
 ti.init(ti.gpu)
 # ti.init(ti.cpu,device_memory_fraction=0.5)
 # ti.init(ti.cpu,device_memory_GB = 4.0)
+ti.init(packed=True)
 
 # OOP in Taichi is similar to Python, all we need is a decorator
 
