@@ -73,3 +73,57 @@ global_2()
 
 # Note: a kernel does not track change of global vals after it has been compiled and executed
 
+# What if I the code I want to parallelize is not optimal? like:
+# @ti.kernel
+# def my_loop():
+#     for i in range(10): # this is fine
+#         for j in range(100): # this is the dominant
+#             ...
+
+# @ti.kernel
+# def bigger_loops():
+#     for j in range(100): # this get parallelised
+#         ...
+        
+# # Then we need carefully design the algorithm, like
+# def smaller_loops():
+#     for _ in range(10):
+#         bigger_loops()
+        
+# is this really working?
+
+# The best practice for atomic operation in the parallel loops
+total = ti.field(dtype=ti.float64,shape=())
+
+@ti.kernel
+def parallel_sum():
+    for i in range(100):
+        # good pratices
+        total[None] += 1 # atomic, safe
+        
+        ti.atomic_add(total[None],1) # atomic, safe
+        
+        # total[None] = total[None] + 1 # possible, not safe and nor atomic, race condition
+        
+parallel_sum()
+print(total) # 200
+
+# advanced topics
+
+# For things under Taichi scope, it's all static
+# we have static data type, static lexical scope
+
+@ti.kernel
+def err_not_static(x : float):
+    a = 100
+    a = 99.77 # implicit conversion, we have 99
+    # a = ti.Vector([1,2,3]) # we do not have implicit convertion for this, thus static data type
+    if x > 0:
+        y = x
+        print(x)
+    else:
+        y = -x
+        print(y)
+    # print(y) # y is out of scope, we cannot see it here, thus static lexical scope
+    
+err_not_static(-10)

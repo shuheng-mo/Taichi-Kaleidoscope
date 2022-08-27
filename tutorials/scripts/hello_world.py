@@ -1,7 +1,8 @@
 import taichi as ti
 
-"""
-This serves as hello world of Taichi, have a try.
+"""This serves as hello world of Taichi, have a try.
+@author:Shuheng Mo
+@time:2022-08-27 00:32:58
 """
 
 # Initialize Taichi and run it on CPU (default)
@@ -15,16 +16,19 @@ This serves as hello world of Taichi, have a try.
 # ti.init(arch=ti.cpu)
 # ti.init(arch=ti.gpu) # falls back to cpu backend automatically if no GPU available
 # ti.init(arch=ti.cuda, device_memory_GB=3.4) # allocate exact GPU memory for taichi
-ti.init(arch=ti.gpu, device_memory_fraction=0.7) # allocate GPU mem by fraction
+# allocate GPU mem by fraction
+ti.init(arch=ti.gpu, device_memory_fraction=0.7)
 
 # there are a lot more args for ti.init() we can use
 
 n = 320
 pixels = ti.field(dtype=float, shape=(n * 2, n))
 
+
 @ti.func
 def complex_sqr(z):
     return ti.Vector([z[0]**2 - z[1]**2, z[1] * z[0] * 2])
+
 
 @ti.kernel
 def paint(t: float):
@@ -45,7 +49,10 @@ def paint(t: float):
 
 # struct-for: for x,y in z:
 
+# Note that for STRUCT-FOR, it CANNOT be in the inner loops, only outermost supported
+
 # code under taichi decorators are in taichi scope, outside it is the Python scope
+
 
 gui = ti.GUI("Julia Set", res=(n * 2, n))
 
@@ -55,8 +62,11 @@ while gui.running:
     gui.set_image(pixels)
     gui.show()
     i = i + 1
-    
+
 # the really diff between ti.kernel and ti.func is:
 # ti.kernel can only be called from python
 # ti.func can only be called by ti.kernel and other ti.func
 # ti.kernel is the smallest unit for runtime execution
+
+# For current ti.kernel arguments:
+# 8 args maximum, must type-hinted, scalar values only, pass by value (no ref or pointers)

@@ -3,7 +3,7 @@ from turtle import shape
 import taichi as ti
 
 ti.init(ti.gpu)
-ti.init(default_ip = ti.i32)
+ti.init(default_ip = ti.i32) # define the default data type
 ti.init(default_fp = ti.f32)
 
 @ti.kernel
@@ -61,12 +61,15 @@ def basic_data_structure():
 basic_data_structure()
 
 # Domain specific data structures
+
+# Field: this is the most recommended ds we can use in Taichi
 # can be read from both taichi and Python scope
 gamma = ti.field(dtype=ti.f64,shape=()) # Scalar field,note shape could be 0-d, that makes perfect global variable
 gamma[None] = 40 # access by [None], otherwise [i,j,k ...]
 velocity_2D = ti.Vector.field(n=2,dtype=ti.f64,shape=())
 velocity_2D[None] = ti.Vector([1.0,1.0])
 heat_field = ti.field(dtype=ti.f64,shape=(256,256)) # Scalar field
+# only need to specify 'n' when it is not scalar field
 strain_tensor_field = ti.Matrix.field(n=2,m=2,dtype=ti.f32,shape=(64,64))
 gravitational_field = ti.Vector.field(n=3,dtype=ti.f32,shape=(512,512,512)) # right way for 3D ?
 print(gamma)
