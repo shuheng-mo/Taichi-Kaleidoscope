@@ -1,4 +1,12 @@
+from turtle import shape
 import taichi as ti
+import torch
+import torch.nn as nn 
+
+"""Taichi data visualisation
+@author: Shuheng Mo
+@time: 2022-08-28 13:37:10
+"""
 
 ti.init(ti.gpu,device_memory_fraction=0.5)
 
