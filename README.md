@@ -22,7 +22,7 @@
 
 <h1 align="center">Taichi-Kaleidoscope</h1>
   <p align="center">
-    <a href="https://github.com/acse-sm321/Mogo"><strong>Read the code documentation »</strong></a>
+    <a href="https://docs.taichi-lang.org/docs"><strong>Read the code documentation »</strong></a>
     <br />
     <br />
     <a href="https://github.com/acse-sm321/Mogo">View Demo</a>
