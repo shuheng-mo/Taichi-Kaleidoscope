@@ -31,8 +31,7 @@ def sum(x: ti.template()):
 def print_buffer(x: ti.template()):
     for i in ti.grouped(x):
         print(x[i])
-
-
+        
 if rank == 0:
     # start taichi for specific process
     # ti.init(ti.cpu)

@@ -119,9 +119,14 @@ _Below is an example of how you can instruct your audience on installing and set
 
 1. Clone the repo
    ```sh
+   $ git clone https://github.com/shuheng-mo/Taichi-Kaleidoscope.git
    ```
 2. Install required packages / compile
     ```
+    # install all the dependencies using pip
+    $ pip install requirements.txt
+    # or create conda environment by
+    $ conda env create -f environment.yml
     ```
 
 3. Trouble shooting & Issues (updating ...)
