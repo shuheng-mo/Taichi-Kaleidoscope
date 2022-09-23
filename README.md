@@ -95,7 +95,7 @@ $ python3 -m pip install taichi
 
 This section listed the major frameworks/libraries used to bootstrap this project. Other add-ons/plugins please refer to the acknowledgements section.
 
-*
+* macOS
 
 
 
