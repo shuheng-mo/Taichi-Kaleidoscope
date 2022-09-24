@@ -79,6 +79,8 @@ $ python3 -m pip install taichi
 ```bash
 1. Numerical method
 2. Computational Fluid Dynamics
+3. Computer Graphics
+4. Computer Geometry
 ```
 
 - Tech included:
@@ -125,6 +127,10 @@ _Below is an example of how you can instruct your audience on installing and set
     ```
     # install all the dependencies using pip
     $ pip install requirements.txt
+
+    # building the utils wheel by setup.py
+    $ pip install .
+
     # or create conda environment by
     $ conda env create -f environment.yml
     ```
@@ -190,7 +196,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 <!-- LICENSE -->
 ## License
 
-Distributed under the GPL-3.0 License. See [`LICENSE.md`](https://github.com/acse-sm321/Mogo/blob/main/LICENSE) for more information.
+Distributed under the GPL-3.0 License. See [`LICENSE.md`](https://github.com/shuheng-mo/Taichi-Kaleidoscope/blob/main/LICENSE) for more information.
 
 <p align="right">(<a href="#top">BACK TO TOP</a>)</p>
 
