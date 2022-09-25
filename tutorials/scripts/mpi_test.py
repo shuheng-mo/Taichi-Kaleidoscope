@@ -7,6 +7,8 @@ import numpy as np
 @time: 2022-08-29 21:10:18
 """
 
+
+
 rank = MPI.COMM_WORLD.Get_rank()
 num_process = MPI.COMM_WORLD.Get_size()
 
